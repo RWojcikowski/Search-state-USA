@@ -26953,25 +26953,50 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _fuseJs = require("fuse.js");
+var _fuseJsDefault = parcelHelpers.interopDefault(_fuseJs);
+var _statesJson = require("../states.json");
+var _statesJsonDefault = parcelHelpers.interopDefault(_statesJson);
+var _s = $RefreshSig$();
+const options = {
+    keys: [
+        "state",
+        "code", 
+    ]
+};
+const fuse = new (0, _fuseJsDefault.default)((0, _statesJsonDefault.default), options);
 const App = ()=>{
+    _s();
+    const [query, setQuery] = (0, _react.useState)("");
+    const [resultList, setResultList] = (0, _react.useState)("[]");
+    console.log({
+        resultList
+    });
+    (0, _react.useEffect)(()=>{
+        setResultList(fuse.search(query));
+    }, [
+        query
+    ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "dropdown is-active",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "dropdown-trigger",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                    class: "input is-large",
+                    value: query,
+                    onChange: ({ target  })=>setQuery(target.value),
+                    className: "input",
                     type: "text",
-                    placeholder: "Large input"
+                    placeholder: "SEARCH STATE ..."
                 }, void 0, false, {
                     fileName: "src/components/App.js",
-                    lineNumber: 7,
-                    columnNumber: 3
+                    lineNumber: 33,
+                    columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 6,
-                columnNumber: 3
+                lineNumber: 32,
+                columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "dropdown-menu",
@@ -26979,51 +27004,31 @@ const App = ()=>{
                 role: "menu",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                     className: "dropdown-content",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                            href: "#",
-                            className: "dropdown-item",
-                            children: "Dropdown item"
-                        }, void 0, false, {
-                            fileName: "src/components/App.js",
-                            lineNumber: 15,
-                            columnNumber: 7
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                            className: "dropdown-item",
-                            children: "Other dropdown item"
-                        }, void 0, false, {
-                            fileName: "src/components/App.js",
-                            lineNumber: 20,
-                            columnNumber: 7
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                            href: "#",
-                            className: "dropdown-item is-active",
-                            children: "Active dropdown item"
-                        }, void 0, false, {
-                            fileName: "src/components/App.js",
-                            lineNumber: 24,
-                            columnNumber: 7
-                        }, undefined)
-                    ]
-                }, void 0, true, {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                        className: "dropdown-item is-active"
+                    }, void 0, false, {
+                        fileName: "src/components/App.js",
+                        lineNumber: 45,
+                        columnNumber: 9
+                    }, undefined)
+                }, void 0, false, {
                     fileName: "src/components/App.js",
-                    lineNumber: 13,
-                    columnNumber: 5
+                    lineNumber: 44,
+                    columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 9,
-                columnNumber: 3
+                lineNumber: 40,
+                columnNumber: 5
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/App.js",
-        lineNumber: 5,
+        lineNumber: 31,
         columnNumber: 9
     }, undefined);
 };
+_s(App, "1BMelBkcqyBj7cweG8BZRsjn+cw=");
 _c = App;
 exports.default = App;
 var _c;
@@ -27034,7 +27039,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gkKU3":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","fuse.js":"4xnao","../states.json":"9E9m3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -27184,6 +27189,1307 @@ function registerExportsForReactRefresh(module) {
     }
 }
 
-},{"react-refresh/runtime":"786KC"}]},["1xC6H","1RB6v","8lqZg"], "8lqZg", "parcelRequire3799")
+},{"react-refresh/runtime":"786KC"}],"4xnao":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>Fuse);
+/**
+ * Fuse.js v6.6.2 - Lightweight fuzzy-search (http://fusejs.io)
+ *
+ * Copyright (c) 2022 Kiro Risk (http://kiro.me)
+ * All Rights Reserved. Apache Software License 2.0
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ */ function isArray(value) {
+    return !Array.isArray ? getTag(value) === "[object Array]" : Array.isArray(value);
+}
+// Adapted from: https://github.com/lodash/lodash/blob/master/.internal/baseToString.js
+const INFINITY = 1 / 0;
+function baseToString(value) {
+    // Exit early for strings to avoid a performance hit in some environments.
+    if (typeof value == "string") return value;
+    let result = value + "";
+    return result == "0" && 1 / value == -INFINITY ? "-0" : result;
+}
+function toString(value) {
+    return value == null ? "" : baseToString(value);
+}
+function isString(value) {
+    return typeof value === "string";
+}
+function isNumber(value) {
+    return typeof value === "number";
+}
+// Adapted from: https://github.com/lodash/lodash/blob/master/isBoolean.js
+function isBoolean(value) {
+    return value === true || value === false || isObjectLike(value) && getTag(value) == "[object Boolean]";
+}
+function isObject(value) {
+    return typeof value === "object";
+}
+// Checks if `value` is object-like.
+function isObjectLike(value) {
+    return isObject(value) && value !== null;
+}
+function isDefined(value) {
+    return value !== undefined && value !== null;
+}
+function isBlank(value) {
+    return !value.trim().length;
+}
+// Gets the `toStringTag` of `value`.
+// Adapted from: https://github.com/lodash/lodash/blob/master/.internal/getTag.js
+function getTag(value) {
+    return value == null ? value === undefined ? "[object Undefined]" : "[object Null]" : Object.prototype.toString.call(value);
+}
+const EXTENDED_SEARCH_UNAVAILABLE = "Extended search is not available";
+const INCORRECT_INDEX_TYPE = "Incorrect 'index' type";
+const LOGICAL_SEARCH_INVALID_QUERY_FOR_KEY = (key)=>`Invalid value for key ${key}`;
+const PATTERN_LENGTH_TOO_LARGE = (max)=>`Pattern length exceeds max of ${max}.`;
+const MISSING_KEY_PROPERTY = (name)=>`Missing ${name} property in key`;
+const INVALID_KEY_WEIGHT_VALUE = (key)=>`Property 'weight' in key '${key}' must be a positive integer`;
+const hasOwn = Object.prototype.hasOwnProperty;
+class KeyStore {
+    constructor(keys){
+        this._keys = [];
+        this._keyMap = {};
+        let totalWeight = 0;
+        keys.forEach((key)=>{
+            let obj = createKey(key);
+            totalWeight += obj.weight;
+            this._keys.push(obj);
+            this._keyMap[obj.id] = obj;
+            totalWeight += obj.weight;
+        });
+        // Normalize weights so that their sum is equal to 1
+        this._keys.forEach((key)=>{
+            key.weight /= totalWeight;
+        });
+    }
+    get(keyId) {
+        return this._keyMap[keyId];
+    }
+    keys() {
+        return this._keys;
+    }
+    toJSON() {
+        return JSON.stringify(this._keys);
+    }
+}
+function createKey(key) {
+    let path = null;
+    let id = null;
+    let src = null;
+    let weight = 1;
+    let getFn = null;
+    if (isString(key) || isArray(key)) {
+        src = key;
+        path = createKeyPath(key);
+        id = createKeyId(key);
+    } else {
+        if (!hasOwn.call(key, "name")) throw new Error(MISSING_KEY_PROPERTY("name"));
+        const name = key.name;
+        src = name;
+        if (hasOwn.call(key, "weight")) {
+            weight = key.weight;
+            if (weight <= 0) throw new Error(INVALID_KEY_WEIGHT_VALUE(name));
+        }
+        path = createKeyPath(name);
+        id = createKeyId(name);
+        getFn = key.getFn;
+    }
+    return {
+        path,
+        id,
+        weight,
+        src,
+        getFn
+    };
+}
+function createKeyPath(key) {
+    return isArray(key) ? key : key.split(".");
+}
+function createKeyId(key) {
+    return isArray(key) ? key.join(".") : key;
+}
+function get(obj1, path1) {
+    let list = [];
+    let arr = false;
+    const deepGet = (obj, path, index)=>{
+        if (!isDefined(obj)) return;
+        if (!path[index]) // If there's no path left, we've arrived at the object we care about.
+        list.push(obj);
+        else {
+            let key = path[index];
+            const value = obj[key];
+            if (!isDefined(value)) return;
+            // If we're at the last value in the path, and if it's a string/number/bool,
+            // add it to the list
+            if (index === path.length - 1 && (isString(value) || isNumber(value) || isBoolean(value))) list.push(toString(value));
+            else if (isArray(value)) {
+                arr = true;
+                // Search each item in the array.
+                for(let i = 0, len = value.length; i < len; i += 1)deepGet(value[i], path, index + 1);
+            } else if (path.length) // An object. Recurse further.
+            deepGet(value, path, index + 1);
+        }
+    };
+    // Backwards compatibility (since path used to be a string)
+    deepGet(obj1, isString(path1) ? path1.split(".") : path1, 0);
+    return arr ? list : list[0];
+}
+const MatchOptions = {
+    // Whether the matches should be included in the result set. When `true`, each record in the result
+    // set will include the indices of the matched characters.
+    // These can consequently be used for highlighting purposes.
+    includeMatches: false,
+    // When `true`, the matching function will continue to the end of a search pattern even if
+    // a perfect match has already been located in the string.
+    findAllMatches: false,
+    // Minimum number of characters that must be matched before a result is considered a match
+    minMatchCharLength: 1
+};
+const BasicOptions = {
+    // When `true`, the algorithm continues searching to the end of the input even if a perfect
+    // match is found before the end of the same input.
+    isCaseSensitive: false,
+    // When true, the matching function will continue to the end of a search pattern even if
+    includeScore: false,
+    // List of properties that will be searched. This also supports nested properties.
+    keys: [],
+    // Whether to sort the result list, by score
+    shouldSort: true,
+    // Default sort function: sort by ascending score, ascending index
+    sortFn: (a, b)=>a.score === b.score ? a.idx < b.idx ? -1 : 1 : a.score < b.score ? -1 : 1
+};
+const FuzzyOptions = {
+    // Approximately where in the text is the pattern expected to be found?
+    location: 0,
+    // At what point does the match algorithm give up. A threshold of '0.0' requires a perfect match
+    // (of both letters and location), a threshold of '1.0' would match anything.
+    threshold: 0.6,
+    // Determines how close the match must be to the fuzzy location (specified above).
+    // An exact letter match which is 'distance' characters away from the fuzzy location
+    // would score as a complete mismatch. A distance of '0' requires the match be at
+    // the exact location specified, a threshold of '1000' would require a perfect match
+    // to be within 800 characters of the fuzzy location to be found using a 0.8 threshold.
+    distance: 100
+};
+const AdvancedOptions = {
+    // When `true`, it enables the use of unix-like search commands
+    useExtendedSearch: false,
+    // The get function to use when fetching an object's properties.
+    // The default will search nested paths *ie foo.bar.baz*
+    getFn: get,
+    // When `true`, search will ignore `location` and `distance`, so it won't matter
+    // where in the string the pattern appears.
+    // More info: https://fusejs.io/concepts/scoring-theory.html#fuzziness-score
+    ignoreLocation: false,
+    // When `true`, the calculation for the relevance score (used for sorting) will
+    // ignore the field-length norm.
+    // More info: https://fusejs.io/concepts/scoring-theory.html#field-length-norm
+    ignoreFieldNorm: false,
+    // The weight to determine how much field length norm effects scoring.
+    fieldNormWeight: 1
+};
+var Config = {
+    ...BasicOptions,
+    ...MatchOptions,
+    ...FuzzyOptions,
+    ...AdvancedOptions
+};
+const SPACE = /[^ ]+/g;
+// Field-length norm: the shorter the field, the higher the weight.
+// Set to 3 decimals to reduce index size.
+function norm(weight = 1, mantissa = 3) {
+    const cache = new Map();
+    const m = Math.pow(10, mantissa);
+    return {
+        get (value) {
+            const numTokens = value.match(SPACE).length;
+            if (cache.has(numTokens)) return cache.get(numTokens);
+            // Default function is 1/sqrt(x), weight makes that variable
+            const norm1 = 1 / Math.pow(numTokens, 0.5 * weight);
+            // In place of `toFixed(mantissa)`, for faster computation
+            const n = parseFloat(Math.round(norm1 * m) / m);
+            cache.set(numTokens, n);
+            return n;
+        },
+        clear () {
+            cache.clear();
+        }
+    };
+}
+class FuseIndex {
+    constructor({ getFn =Config.getFn , fieldNormWeight =Config.fieldNormWeight  } = {}){
+        this.norm = norm(fieldNormWeight, 3);
+        this.getFn = getFn;
+        this.isCreated = false;
+        this.setIndexRecords();
+    }
+    setSources(docs = []) {
+        this.docs = docs;
+    }
+    setIndexRecords(records = []) {
+        this.records = records;
+    }
+    setKeys(keys = []) {
+        this.keys = keys;
+        this._keysMap = {};
+        keys.forEach((key, idx)=>{
+            this._keysMap[key.id] = idx;
+        });
+    }
+    create() {
+        if (this.isCreated || !this.docs.length) return;
+        this.isCreated = true;
+        // List is Array<String>
+        if (isString(this.docs[0])) this.docs.forEach((doc, docIndex)=>{
+            this._addString(doc, docIndex);
+        });
+        else // List is Array<Object>
+        this.docs.forEach((doc, docIndex)=>{
+            this._addObject(doc, docIndex);
+        });
+        this.norm.clear();
+    }
+    // Adds a doc to the end of the index
+    add(doc) {
+        const idx = this.size();
+        if (isString(doc)) this._addString(doc, idx);
+        else this._addObject(doc, idx);
+    }
+    // Removes the doc at the specified index of the index
+    removeAt(idx) {
+        this.records.splice(idx, 1);
+        // Change ref index of every subsquent doc
+        for(let i = idx, len = this.size(); i < len; i += 1)this.records[i].i -= 1;
+    }
+    getValueForItemAtKeyId(item, keyId) {
+        return item[this._keysMap[keyId]];
+    }
+    size() {
+        return this.records.length;
+    }
+    _addString(doc, docIndex) {
+        if (!isDefined(doc) || isBlank(doc)) return;
+        let record = {
+            v: doc,
+            i: docIndex,
+            n: this.norm.get(doc)
+        };
+        this.records.push(record);
+    }
+    _addObject(doc, docIndex) {
+        let record = {
+            i: docIndex,
+            $: {}
+        };
+        // Iterate over every key (i.e, path), and fetch the value at that key
+        this.keys.forEach((key, keyIndex)=>{
+            let value = key.getFn ? key.getFn(doc) : this.getFn(doc, key.path);
+            if (!isDefined(value)) return;
+            if (isArray(value)) {
+                let subRecords = [];
+                const stack = [
+                    {
+                        nestedArrIndex: -1,
+                        value
+                    }
+                ];
+                while(stack.length){
+                    const { nestedArrIndex , value  } = stack.pop();
+                    if (!isDefined(value)) continue;
+                    if (isString(value) && !isBlank(value)) {
+                        let subRecord = {
+                            v: value,
+                            i: nestedArrIndex,
+                            n: this.norm.get(value)
+                        };
+                        subRecords.push(subRecord);
+                    } else if (isArray(value)) value.forEach((item, k)=>{
+                        stack.push({
+                            nestedArrIndex: k,
+                            value: item
+                        });
+                    });
+                }
+                record.$[keyIndex] = subRecords;
+            } else if (isString(value) && !isBlank(value)) {
+                let subRecord = {
+                    v: value,
+                    n: this.norm.get(value)
+                };
+                record.$[keyIndex] = subRecord;
+            }
+        });
+        this.records.push(record);
+    }
+    toJSON() {
+        return {
+            keys: this.keys,
+            records: this.records
+        };
+    }
+}
+function createIndex(keys, docs, { getFn =Config.getFn , fieldNormWeight =Config.fieldNormWeight  } = {}) {
+    const myIndex = new FuseIndex({
+        getFn,
+        fieldNormWeight
+    });
+    myIndex.setKeys(keys.map(createKey));
+    myIndex.setSources(docs);
+    myIndex.create();
+    return myIndex;
+}
+function parseIndex(data, { getFn =Config.getFn , fieldNormWeight =Config.fieldNormWeight  } = {}) {
+    const { keys , records  } = data;
+    const myIndex = new FuseIndex({
+        getFn,
+        fieldNormWeight
+    });
+    myIndex.setKeys(keys);
+    myIndex.setIndexRecords(records);
+    return myIndex;
+}
+function computeScore$1(pattern, { errors =0 , currentLocation =0 , expectedLocation =0 , distance =Config.distance , ignoreLocation =Config.ignoreLocation  } = {}) {
+    const accuracy = errors / pattern.length;
+    if (ignoreLocation) return accuracy;
+    const proximity = Math.abs(expectedLocation - currentLocation);
+    if (!distance) // Dodge divide by zero error.
+    return proximity ? 1.0 : accuracy;
+    return accuracy + proximity / distance;
+}
+function convertMaskToIndices(matchmask = [], minMatchCharLength = Config.minMatchCharLength) {
+    let indices = [];
+    let start = -1;
+    let end = -1;
+    let i = 0;
+    for(let len = matchmask.length; i < len; i += 1){
+        let match = matchmask[i];
+        if (match && start === -1) start = i;
+        else if (!match && start !== -1) {
+            end = i - 1;
+            if (end - start + 1 >= minMatchCharLength) indices.push([
+                start,
+                end
+            ]);
+            start = -1;
+        }
+    }
+    // (i-1 - start) + 1 => i - start
+    if (matchmask[i - 1] && i - start >= minMatchCharLength) indices.push([
+        start,
+        i - 1
+    ]);
+    return indices;
+}
+// Machine word size
+const MAX_BITS = 32;
+function search(text, pattern, patternAlphabet, { location =Config.location , distance =Config.distance , threshold =Config.threshold , findAllMatches =Config.findAllMatches , minMatchCharLength =Config.minMatchCharLength , includeMatches =Config.includeMatches , ignoreLocation =Config.ignoreLocation  } = {}) {
+    if (pattern.length > MAX_BITS) throw new Error(PATTERN_LENGTH_TOO_LARGE(MAX_BITS));
+    const patternLen = pattern.length;
+    // Set starting location at beginning text and initialize the alphabet.
+    const textLen = text.length;
+    // Handle the case when location > text.length
+    const expectedLocation = Math.max(0, Math.min(location, textLen));
+    // Highest score beyond which we give up.
+    let currentThreshold = threshold;
+    // Is there a nearby exact match? (speedup)
+    let bestLocation = expectedLocation;
+    // Performance: only computer matches when the minMatchCharLength > 1
+    // OR if `includeMatches` is true.
+    const computeMatches = minMatchCharLength > 1 || includeMatches;
+    // A mask of the matches, used for building the indices
+    const matchMask = computeMatches ? Array(textLen) : [];
+    let index;
+    // Get all exact matches, here for speed up
+    while((index = text.indexOf(pattern, bestLocation)) > -1){
+        let score = computeScore$1(pattern, {
+            currentLocation: index,
+            expectedLocation,
+            distance,
+            ignoreLocation
+        });
+        currentThreshold = Math.min(score, currentThreshold);
+        bestLocation = index + patternLen;
+        if (computeMatches) {
+            let i = 0;
+            while(i < patternLen){
+                matchMask[index + i] = 1;
+                i += 1;
+            }
+        }
+    }
+    // Reset the best location
+    bestLocation = -1;
+    let lastBitArr = [];
+    let finalScore = 1;
+    let binMax = patternLen + textLen;
+    const mask = 1 << patternLen - 1;
+    for(let i = 0; i < patternLen; i += 1){
+        // Scan for the best match; each iteration allows for one more error.
+        // Run a binary search to determine how far from the match location we can stray
+        // at this error level.
+        let binMin = 0;
+        let binMid = binMax;
+        while(binMin < binMid){
+            const score = computeScore$1(pattern, {
+                errors: i,
+                currentLocation: expectedLocation + binMid,
+                expectedLocation,
+                distance,
+                ignoreLocation
+            });
+            if (score <= currentThreshold) binMin = binMid;
+            else binMax = binMid;
+            binMid = Math.floor((binMax - binMin) / 2 + binMin);
+        }
+        // Use the result from this iteration as the maximum for the next.
+        binMax = binMid;
+        let start = Math.max(1, expectedLocation - binMid + 1);
+        let finish = findAllMatches ? textLen : Math.min(expectedLocation + binMid, textLen) + patternLen;
+        // Initialize the bit array
+        let bitArr = Array(finish + 2);
+        bitArr[finish + 1] = (1 << i) - 1;
+        for(let j = finish; j >= start; j -= 1){
+            let currentLocation = j - 1;
+            let charMatch = patternAlphabet[text.charAt(currentLocation)];
+            if (computeMatches) // Speed up: quick bool to int conversion (i.e, `charMatch ? 1 : 0`)
+            matchMask[currentLocation] = +!!charMatch;
+            // First pass: exact match
+            bitArr[j] = (bitArr[j + 1] << 1 | 1) & charMatch;
+            // Subsequent passes: fuzzy match
+            if (i) bitArr[j] |= (lastBitArr[j + 1] | lastBitArr[j]) << 1 | 1 | lastBitArr[j + 1];
+            if (bitArr[j] & mask) {
+                finalScore = computeScore$1(pattern, {
+                    errors: i,
+                    currentLocation,
+                    expectedLocation,
+                    distance,
+                    ignoreLocation
+                });
+                // This match will almost certainly be better than any existing match.
+                // But check anyway.
+                if (finalScore <= currentThreshold) {
+                    // Indeed it is
+                    currentThreshold = finalScore;
+                    bestLocation = currentLocation;
+                    // Already passed `loc`, downhill from here on in.
+                    if (bestLocation <= expectedLocation) break;
+                    // When passing `bestLocation`, don't exceed our current distance from `expectedLocation`.
+                    start = Math.max(1, 2 * expectedLocation - bestLocation);
+                }
+            }
+        }
+        // No hope for a (better) match at greater error levels.
+        const score = computeScore$1(pattern, {
+            errors: i + 1,
+            currentLocation: expectedLocation,
+            expectedLocation,
+            distance,
+            ignoreLocation
+        });
+        if (score > currentThreshold) break;
+        lastBitArr = bitArr;
+    }
+    const result = {
+        isMatch: bestLocation >= 0,
+        // Count exact matches (those with a score of 0) to be "almost" exact
+        score: Math.max(0.001, finalScore)
+    };
+    if (computeMatches) {
+        const indices = convertMaskToIndices(matchMask, minMatchCharLength);
+        if (!indices.length) result.isMatch = false;
+        else if (includeMatches) result.indices = indices;
+    }
+    return result;
+}
+function createPatternAlphabet(pattern) {
+    let mask = {};
+    for(let i = 0, len = pattern.length; i < len; i += 1){
+        const char = pattern.charAt(i);
+        mask[char] = (mask[char] || 0) | 1 << len - i - 1;
+    }
+    return mask;
+}
+class BitapSearch {
+    constructor(pattern1, { location =Config.location , threshold =Config.threshold , distance =Config.distance , includeMatches =Config.includeMatches , findAllMatches =Config.findAllMatches , minMatchCharLength =Config.minMatchCharLength , isCaseSensitive =Config.isCaseSensitive , ignoreLocation =Config.ignoreLocation  } = {}){
+        this.options = {
+            location,
+            threshold,
+            distance,
+            includeMatches,
+            findAllMatches,
+            minMatchCharLength,
+            isCaseSensitive,
+            ignoreLocation
+        };
+        this.pattern = isCaseSensitive ? pattern1 : pattern1.toLowerCase();
+        this.chunks = [];
+        if (!this.pattern.length) return;
+        const addChunk = (pattern, startIndex)=>{
+            this.chunks.push({
+                pattern,
+                alphabet: createPatternAlphabet(pattern),
+                startIndex
+            });
+        };
+        const len = this.pattern.length;
+        if (len > MAX_BITS) {
+            let i = 0;
+            const remainder = len % MAX_BITS;
+            const end = len - remainder;
+            while(i < end){
+                addChunk(this.pattern.substr(i, MAX_BITS), i);
+                i += MAX_BITS;
+            }
+            if (remainder) {
+                const startIndex = len - MAX_BITS;
+                addChunk(this.pattern.substr(startIndex), startIndex);
+            }
+        } else addChunk(this.pattern, 0);
+    }
+    searchIn(text) {
+        const { isCaseSensitive , includeMatches  } = this.options;
+        if (!isCaseSensitive) text = text.toLowerCase();
+        // Exact match
+        if (this.pattern === text) {
+            let result = {
+                isMatch: true,
+                score: 0
+            };
+            if (includeMatches) result.indices = [
+                [
+                    0,
+                    text.length - 1
+                ]
+            ];
+            return result;
+        }
+        // Otherwise, use Bitap algorithm
+        const { location , distance , threshold , findAllMatches , minMatchCharLength , ignoreLocation  } = this.options;
+        let allIndices = [];
+        let totalScore = 0;
+        let hasMatches = false;
+        this.chunks.forEach(({ pattern , alphabet , startIndex  })=>{
+            const { isMatch , score , indices  } = search(text, pattern, alphabet, {
+                location: location + startIndex,
+                distance,
+                threshold,
+                findAllMatches,
+                minMatchCharLength,
+                includeMatches,
+                ignoreLocation
+            });
+            if (isMatch) hasMatches = true;
+            totalScore += score;
+            if (isMatch && indices) allIndices = [
+                ...allIndices,
+                ...indices
+            ];
+        });
+        let result = {
+            isMatch: hasMatches,
+            score: hasMatches ? totalScore / this.chunks.length : 1
+        };
+        if (hasMatches && includeMatches) result.indices = allIndices;
+        return result;
+    }
+}
+class BaseMatch {
+    constructor(pattern){
+        this.pattern = pattern;
+    }
+    static isMultiMatch(pattern) {
+        return getMatch(pattern, this.multiRegex);
+    }
+    static isSingleMatch(pattern) {
+        return getMatch(pattern, this.singleRegex);
+    }
+    search() {}
+}
+function getMatch(pattern, exp) {
+    const matches = pattern.match(exp);
+    return matches ? matches[1] : null;
+}
+// Token: 'file
+class ExactMatch extends BaseMatch {
+    constructor(pattern){
+        super(pattern);
+    }
+    static get type() {
+        return "exact";
+    }
+    static get multiRegex() {
+        return /^="(.*)"$/;
+    }
+    static get singleRegex() {
+        return /^=(.*)$/;
+    }
+    search(text) {
+        const isMatch = text === this.pattern;
+        return {
+            isMatch,
+            score: isMatch ? 0 : 1,
+            indices: [
+                0,
+                this.pattern.length - 1
+            ]
+        };
+    }
+}
+// Token: !fire
+class InverseExactMatch extends BaseMatch {
+    constructor(pattern){
+        super(pattern);
+    }
+    static get type() {
+        return "inverse-exact";
+    }
+    static get multiRegex() {
+        return /^!"(.*)"$/;
+    }
+    static get singleRegex() {
+        return /^!(.*)$/;
+    }
+    search(text) {
+        const index = text.indexOf(this.pattern);
+        const isMatch = index === -1;
+        return {
+            isMatch,
+            score: isMatch ? 0 : 1,
+            indices: [
+                0,
+                text.length - 1
+            ]
+        };
+    }
+}
+// Token: ^file
+class PrefixExactMatch extends BaseMatch {
+    constructor(pattern){
+        super(pattern);
+    }
+    static get type() {
+        return "prefix-exact";
+    }
+    static get multiRegex() {
+        return /^\^"(.*)"$/;
+    }
+    static get singleRegex() {
+        return /^\^(.*)$/;
+    }
+    search(text) {
+        const isMatch = text.startsWith(this.pattern);
+        return {
+            isMatch,
+            score: isMatch ? 0 : 1,
+            indices: [
+                0,
+                this.pattern.length - 1
+            ]
+        };
+    }
+}
+// Token: !^fire
+class InversePrefixExactMatch extends BaseMatch {
+    constructor(pattern){
+        super(pattern);
+    }
+    static get type() {
+        return "inverse-prefix-exact";
+    }
+    static get multiRegex() {
+        return /^!\^"(.*)"$/;
+    }
+    static get singleRegex() {
+        return /^!\^(.*)$/;
+    }
+    search(text) {
+        const isMatch = !text.startsWith(this.pattern);
+        return {
+            isMatch,
+            score: isMatch ? 0 : 1,
+            indices: [
+                0,
+                text.length - 1
+            ]
+        };
+    }
+}
+// Token: .file$
+class SuffixExactMatch extends BaseMatch {
+    constructor(pattern){
+        super(pattern);
+    }
+    static get type() {
+        return "suffix-exact";
+    }
+    static get multiRegex() {
+        return /^"(.*)"\$$/;
+    }
+    static get singleRegex() {
+        return /^(.*)\$$/;
+    }
+    search(text) {
+        const isMatch = text.endsWith(this.pattern);
+        return {
+            isMatch,
+            score: isMatch ? 0 : 1,
+            indices: [
+                text.length - this.pattern.length,
+                text.length - 1
+            ]
+        };
+    }
+}
+// Token: !.file$
+class InverseSuffixExactMatch extends BaseMatch {
+    constructor(pattern){
+        super(pattern);
+    }
+    static get type() {
+        return "inverse-suffix-exact";
+    }
+    static get multiRegex() {
+        return /^!"(.*)"\$$/;
+    }
+    static get singleRegex() {
+        return /^!(.*)\$$/;
+    }
+    search(text) {
+        const isMatch = !text.endsWith(this.pattern);
+        return {
+            isMatch,
+            score: isMatch ? 0 : 1,
+            indices: [
+                0,
+                text.length - 1
+            ]
+        };
+    }
+}
+class FuzzyMatch extends BaseMatch {
+    constructor(pattern, { location =Config.location , threshold =Config.threshold , distance =Config.distance , includeMatches =Config.includeMatches , findAllMatches =Config.findAllMatches , minMatchCharLength =Config.minMatchCharLength , isCaseSensitive =Config.isCaseSensitive , ignoreLocation =Config.ignoreLocation  } = {}){
+        super(pattern);
+        this._bitapSearch = new BitapSearch(pattern, {
+            location,
+            threshold,
+            distance,
+            includeMatches,
+            findAllMatches,
+            minMatchCharLength,
+            isCaseSensitive,
+            ignoreLocation
+        });
+    }
+    static get type() {
+        return "fuzzy";
+    }
+    static get multiRegex() {
+        return /^"(.*)"$/;
+    }
+    static get singleRegex() {
+        return /^(.*)$/;
+    }
+    search(text) {
+        return this._bitapSearch.searchIn(text);
+    }
+}
+// Token: 'file
+class IncludeMatch extends BaseMatch {
+    constructor(pattern){
+        super(pattern);
+    }
+    static get type() {
+        return "include";
+    }
+    static get multiRegex() {
+        return /^'"(.*)"$/;
+    }
+    static get singleRegex() {
+        return /^'(.*)$/;
+    }
+    search(text) {
+        let location = 0;
+        let index;
+        const indices = [];
+        const patternLen = this.pattern.length;
+        // Get all exact matches
+        while((index = text.indexOf(this.pattern, location)) > -1){
+            location = index + patternLen;
+            indices.push([
+                index,
+                location - 1
+            ]);
+        }
+        const isMatch = !!indices.length;
+        return {
+            isMatch,
+            score: isMatch ? 0 : 1,
+            indices
+        };
+    }
+}
+// ❗Order is important. DO NOT CHANGE.
+const searchers = [
+    ExactMatch,
+    IncludeMatch,
+    PrefixExactMatch,
+    InversePrefixExactMatch,
+    InverseSuffixExactMatch,
+    SuffixExactMatch,
+    InverseExactMatch,
+    FuzzyMatch
+];
+const searchersLen = searchers.length;
+// Regex to split by spaces, but keep anything in quotes together
+const SPACE_RE = / +(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)/;
+const OR_TOKEN = "|";
+// Return a 2D array representation of the query, for simpler parsing.
+// Example:
+// "^core go$ | rb$ | py$ xy$" => [["^core", "go$"], ["rb$"], ["py$", "xy$"]]
+function parseQuery(pattern, options = {}) {
+    return pattern.split(OR_TOKEN).map((item1)=>{
+        let query = item1.trim().split(SPACE_RE).filter((item)=>item && !!item.trim());
+        let results = [];
+        for(let i = 0, len = query.length; i < len; i += 1){
+            const queryItem = query[i];
+            // 1. Handle multiple query match (i.e, once that are quoted, like `"hello world"`)
+            let found = false;
+            let idx = -1;
+            while(!found && ++idx < searchersLen){
+                const searcher = searchers[idx];
+                let token = searcher.isMultiMatch(queryItem);
+                if (token) {
+                    results.push(new searcher(token, options));
+                    found = true;
+                }
+            }
+            if (found) continue;
+            // 2. Handle single query matches (i.e, once that are *not* quoted)
+            idx = -1;
+            while(++idx < searchersLen){
+                const searcher = searchers[idx];
+                let token = searcher.isSingleMatch(queryItem);
+                if (token) {
+                    results.push(new searcher(token, options));
+                    break;
+                }
+            }
+        }
+        return results;
+    });
+}
+// These extended matchers can return an array of matches, as opposed
+// to a singl match
+const MultiMatchSet = new Set([
+    FuzzyMatch.type,
+    IncludeMatch.type
+]);
+/**
+ * Command-like searching
+ * ======================
+ *
+ * Given multiple search terms delimited by spaces.e.g. `^jscript .python$ ruby !java`,
+ * search in a given text.
+ *
+ * Search syntax:
+ *
+ * | Token       | Match type                 | Description                            |
+ * | ----------- | -------------------------- | -------------------------------------- |
+ * | `jscript`   | fuzzy-match                | Items that fuzzy match `jscript`       |
+ * | `=scheme`   | exact-match                | Items that are `scheme`                |
+ * | `'python`   | include-match              | Items that include `python`            |
+ * | `!ruby`     | inverse-exact-match        | Items that do not include `ruby`       |
+ * | `^java`     | prefix-exact-match         | Items that start with `java`           |
+ * | `!^earlang` | inverse-prefix-exact-match | Items that do not start with `earlang` |
+ * | `.js$`      | suffix-exact-match         | Items that end with `.js`              |
+ * | `!.go$`     | inverse-suffix-exact-match | Items that do not end with `.go`       |
+ *
+ * A single pipe character acts as an OR operator. For example, the following
+ * query matches entries that start with `core` and end with either`go`, `rb`,
+ * or`py`.
+ *
+ * ```
+ * ^core go$ | rb$ | py$
+ * ```
+ */ class ExtendedSearch {
+    constructor(pattern, { isCaseSensitive =Config.isCaseSensitive , includeMatches =Config.includeMatches , minMatchCharLength =Config.minMatchCharLength , ignoreLocation =Config.ignoreLocation , findAllMatches =Config.findAllMatches , location =Config.location , threshold =Config.threshold , distance =Config.distance  } = {}){
+        this.query = null;
+        this.options = {
+            isCaseSensitive,
+            includeMatches,
+            minMatchCharLength,
+            findAllMatches,
+            ignoreLocation,
+            location,
+            threshold,
+            distance
+        };
+        this.pattern = isCaseSensitive ? pattern : pattern.toLowerCase();
+        this.query = parseQuery(this.pattern, this.options);
+    }
+    static condition(_, options) {
+        return options.useExtendedSearch;
+    }
+    searchIn(text) {
+        const query = this.query;
+        if (!query) return {
+            isMatch: false,
+            score: 1
+        };
+        const { includeMatches , isCaseSensitive  } = this.options;
+        text = isCaseSensitive ? text : text.toLowerCase();
+        let numMatches = 0;
+        let allIndices = [];
+        let totalScore = 0;
+        // ORs
+        for(let i = 0, qLen = query.length; i < qLen; i += 1){
+            const searchers1 = query[i];
+            // Reset indices
+            allIndices.length = 0;
+            numMatches = 0;
+            // ANDs
+            for(let j = 0, pLen = searchers1.length; j < pLen; j += 1){
+                const searcher = searchers1[j];
+                const { isMatch , indices , score  } = searcher.search(text);
+                if (isMatch) {
+                    numMatches += 1;
+                    totalScore += score;
+                    if (includeMatches) {
+                        const type = searcher.constructor.type;
+                        if (MultiMatchSet.has(type)) allIndices = [
+                            ...allIndices,
+                            ...indices
+                        ];
+                        else allIndices.push(indices);
+                    }
+                } else {
+                    totalScore = 0;
+                    numMatches = 0;
+                    allIndices.length = 0;
+                    break;
+                }
+            }
+            // OR condition, so if TRUE, return
+            if (numMatches) {
+                let result = {
+                    isMatch: true,
+                    score: totalScore / numMatches
+                };
+                if (includeMatches) result.indices = allIndices;
+                return result;
+            }
+        }
+        // Nothing was matched
+        return {
+            isMatch: false,
+            score: 1
+        };
+    }
+}
+const registeredSearchers = [];
+function register(...args) {
+    registeredSearchers.push(...args);
+}
+function createSearcher(pattern, options) {
+    for(let i = 0, len = registeredSearchers.length; i < len; i += 1){
+        let searcherClass = registeredSearchers[i];
+        if (searcherClass.condition(pattern, options)) return new searcherClass(pattern, options);
+    }
+    return new BitapSearch(pattern, options);
+}
+const LogicalOperator = {
+    AND: "$and",
+    OR: "$or"
+};
+const KeyType = {
+    PATH: "$path",
+    PATTERN: "$val"
+};
+const isExpression = (query)=>!!(query[LogicalOperator.AND] || query[LogicalOperator.OR]);
+const isPath = (query)=>!!query[KeyType.PATH];
+const isLeaf = (query)=>!isArray(query) && isObject(query) && !isExpression(query);
+const convertToExplicit = (query)=>({
+        [LogicalOperator.AND]: Object.keys(query).map((key)=>({
+                [key]: query[key]
+            }))
+    });
+// When `auto` is `true`, the parse function will infer and initialize and add
+// the appropriate `Searcher` instance
+function parse(query1, options, { auto =true  } = {}) {
+    const next = (query)=>{
+        let keys = Object.keys(query);
+        const isQueryPath = isPath(query);
+        if (!isQueryPath && keys.length > 1 && !isExpression(query)) return next(convertToExplicit(query));
+        if (isLeaf(query)) {
+            const key = isQueryPath ? query[KeyType.PATH] : keys[0];
+            const pattern = isQueryPath ? query[KeyType.PATTERN] : query[key];
+            if (!isString(pattern)) throw new Error(LOGICAL_SEARCH_INVALID_QUERY_FOR_KEY(key));
+            const obj = {
+                keyId: createKeyId(key),
+                pattern
+            };
+            if (auto) obj.searcher = createSearcher(pattern, options);
+            return obj;
+        }
+        let node = {
+            children: [],
+            operator: keys[0]
+        };
+        keys.forEach((key)=>{
+            const value = query[key];
+            if (isArray(value)) value.forEach((item)=>{
+                node.children.push(next(item));
+            });
+        });
+        return node;
+    };
+    if (!isExpression(query1)) query1 = convertToExplicit(query1);
+    return next(query1);
+}
+// Practical scoring function
+function computeScore(results, { ignoreFieldNorm =Config.ignoreFieldNorm  }) {
+    results.forEach((result)=>{
+        let totalScore = 1;
+        result.matches.forEach(({ key , norm: norm2 , score  })=>{
+            const weight = key ? key.weight : null;
+            totalScore *= Math.pow(score === 0 && weight ? Number.EPSILON : score, (weight || 1) * (ignoreFieldNorm ? 1 : norm2));
+        });
+        result.score = totalScore;
+    });
+}
+function transformMatches(result, data) {
+    const matches = result.matches;
+    data.matches = [];
+    if (!isDefined(matches)) return;
+    matches.forEach((match)=>{
+        if (!isDefined(match.indices) || !match.indices.length) return;
+        const { indices , value  } = match;
+        let obj = {
+            indices,
+            value
+        };
+        if (match.key) obj.key = match.key.src;
+        if (match.idx > -1) obj.refIndex = match.idx;
+        data.matches.push(obj);
+    });
+}
+function transformScore(result, data) {
+    data.score = result.score;
+}
+function format(results, docs, { includeMatches =Config.includeMatches , includeScore =Config.includeScore  } = {}) {
+    const transformers = [];
+    if (includeMatches) transformers.push(transformMatches);
+    if (includeScore) transformers.push(transformScore);
+    return results.map((result)=>{
+        const { idx  } = result;
+        const data = {
+            item: docs[idx],
+            refIndex: idx
+        };
+        if (transformers.length) transformers.forEach((transformer)=>{
+            transformer(result, data);
+        });
+        return data;
+    });
+}
+class Fuse {
+    constructor(docs, options = {}, index){
+        this.options = {
+            ...Config,
+            ...options
+        };
+        this.options.useExtendedSearch;
+        this._keyStore = new KeyStore(this.options.keys);
+        this.setCollection(docs, index);
+    }
+    setCollection(docs, index) {
+        this._docs = docs;
+        if (index && !(index instanceof FuseIndex)) throw new Error(INCORRECT_INDEX_TYPE);
+        this._myIndex = index || createIndex(this.options.keys, this._docs, {
+            getFn: this.options.getFn,
+            fieldNormWeight: this.options.fieldNormWeight
+        });
+    }
+    add(doc) {
+        if (!isDefined(doc)) return;
+        this._docs.push(doc);
+        this._myIndex.add(doc);
+    }
+    remove(predicate = ()=>false) {
+        const results = [];
+        for(let i = 0, len = this._docs.length; i < len; i += 1){
+            const doc = this._docs[i];
+            if (predicate(doc, i)) {
+                this.removeAt(i);
+                i -= 1;
+                len -= 1;
+                results.push(doc);
+            }
+        }
+        return results;
+    }
+    removeAt(idx) {
+        this._docs.splice(idx, 1);
+        this._myIndex.removeAt(idx);
+    }
+    getIndex() {
+        return this._myIndex;
+    }
+    search(query, { limit =-1  } = {}) {
+        const { includeMatches , includeScore , shouldSort , sortFn , ignoreFieldNorm  } = this.options;
+        let results = isString(query) ? isString(this._docs[0]) ? this._searchStringList(query) : this._searchObjectList(query) : this._searchLogical(query);
+        computeScore(results, {
+            ignoreFieldNorm
+        });
+        if (shouldSort) results.sort(sortFn);
+        if (isNumber(limit) && limit > -1) results = results.slice(0, limit);
+        return format(results, this._docs, {
+            includeMatches,
+            includeScore
+        });
+    }
+    _searchStringList(query) {
+        const searcher = createSearcher(query, this.options);
+        const { records  } = this._myIndex;
+        const results = [];
+        // Iterate over every string in the index
+        records.forEach(({ v: text , i: idx , n: norm3  })=>{
+            if (!isDefined(text)) return;
+            const { isMatch , score , indices  } = searcher.searchIn(text);
+            if (isMatch) results.push({
+                item: text,
+                idx,
+                matches: [
+                    {
+                        score,
+                        value: text,
+                        norm: norm3,
+                        indices
+                    }
+                ]
+            });
+        });
+        return results;
+    }
+    _searchLogical(query) {
+        const expression = parse(query, this.options);
+        const evaluate = (node, item, idx)=>{
+            if (!node.children) {
+                const { keyId , searcher  } = node;
+                const matches = this._findMatches({
+                    key: this._keyStore.get(keyId),
+                    value: this._myIndex.getValueForItemAtKeyId(item, keyId),
+                    searcher
+                });
+                if (matches && matches.length) return [
+                    {
+                        idx,
+                        item,
+                        matches
+                    }
+                ];
+                return [];
+            }
+            const res = [];
+            for(let i = 0, len = node.children.length; i < len; i += 1){
+                const child = node.children[i];
+                const result = evaluate(child, item, idx);
+                if (result.length) res.push(...result);
+                else if (node.operator === LogicalOperator.AND) return [];
+            }
+            return res;
+        };
+        const records = this._myIndex.records;
+        const resultMap = {};
+        const results = [];
+        records.forEach(({ $: item , i: idx  })=>{
+            if (isDefined(item)) {
+                let expResults = evaluate(expression, item, idx);
+                if (expResults.length) {
+                    // Dedupe when adding
+                    if (!resultMap[idx]) {
+                        resultMap[idx] = {
+                            idx,
+                            item,
+                            matches: []
+                        };
+                        results.push(resultMap[idx]);
+                    }
+                    expResults.forEach(({ matches  })=>{
+                        resultMap[idx].matches.push(...matches);
+                    });
+                }
+            }
+        });
+        return results;
+    }
+    _searchObjectList(query) {
+        const searcher = createSearcher(query, this.options);
+        const { keys , records  } = this._myIndex;
+        const results = [];
+        // List is Array<Object>
+        records.forEach(({ $: item , i: idx  })=>{
+            if (!isDefined(item)) return;
+            let matches = [];
+            // Iterate over every key (i.e, path), and fetch the value at that key
+            keys.forEach((key, keyIndex)=>{
+                matches.push(...this._findMatches({
+                    key,
+                    value: item[keyIndex],
+                    searcher
+                }));
+            });
+            if (matches.length) results.push({
+                idx,
+                item,
+                matches
+            });
+        });
+        return results;
+    }
+    _findMatches({ key , value , searcher  }) {
+        if (!isDefined(value)) return [];
+        let matches = [];
+        if (isArray(value)) value.forEach(({ v: text , i: idx , n: norm4  })=>{
+            if (!isDefined(text)) return;
+            const { isMatch , score , indices  } = searcher.searchIn(text);
+            if (isMatch) matches.push({
+                score,
+                key,
+                value: text,
+                idx,
+                norm: norm4,
+                indices
+            });
+        });
+        else {
+            const { v: text , n: norm5  } = value;
+            const { isMatch , score , indices  } = searcher.searchIn(text);
+            if (isMatch) matches.push({
+                score,
+                key,
+                value: text,
+                norm: norm5,
+                indices
+            });
+        }
+        return matches;
+    }
+}
+Fuse.version = "6.6.2";
+Fuse.createIndex = createIndex;
+Fuse.parseIndex = parseIndex;
+Fuse.config = Config;
+Fuse.parseQuery = parse;
+register(ExtendedSearch);
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9E9m3":[function(require,module,exports) {
+module.exports = JSON.parse('[{"state":"Alabama","slug":"alabama","code":"AL","nickname":"Yellowhammer State","website":"http://www.alabama.gov","admission_date":"1819-12-14","admission_number":22,"capital_city":"Montgomery","capital_url":"http://www.montgomeryal.gov","population":4833722,"population_rank":23,"constitution_url":"http://alisondb.legislature.state.al.us/alison/default.aspx","state_flag_url":"https://cdn.civil.services/us-states/flags/alabama-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/alabama-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/alabama-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/alabama.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/alabama.jpg","twitter_url":"https://twitter.com/alabamagov","facebook_url":"https://www.facebook.com/alabamagov"},{"state":"Alaska","slug":"alaska","code":"AK","nickname":"The Last Frontier","website":"http://alaska.gov","admission_date":"1959-01-03","admission_number":49,"capital_city":"Juneau","capital_url":"http://www.juneau.org","population":735132,"population_rank":47,"constitution_url":"http://www.legis.state.ak.us/basis/folioproxy.asp?url=http://wwwjnu01.legis.state.ak.us/cgi-bin/folioisa.dll/acontxt/query=*/doc/{t1}?","state_flag_url":"https://cdn.civil.services/us-states/flags/alaska-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/alaska-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/alaska-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/alaska.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/alaska.jpg","twitter_url":"https://twitter.com/alaska","facebook_url":"https://www.facebook.com/AlaskaLocalGovernments"},{"state":"Arizona","slug":"arizona","code":"AZ","nickname":"The Grand Canyon State","website":"https://az.gov","admission_date":"1912-02-14","admission_number":48,"capital_city":"Phoenix","capital_url":"https://www.phoenix.gov","population":6626624,"population_rank":15,"constitution_url":"http://www.azleg.gov/Constitution.asp","state_flag_url":"https://cdn.civil.services/us-states/flags/arizona-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/arizona-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/arizona-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/arizona.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/arizona.jpg","twitter_url":null,"facebook_url":null},{"state":"Arkansas","slug":"arkansas","code":"AR","nickname":"The Natural State","website":"http://arkansas.gov","admission_date":"1836-06-15","admission_number":25,"capital_city":"Little Rock","capital_url":"http://www.littlerock.org","population":2959373,"population_rank":32,"constitution_url":"http://www.arkleg.state.ar.us/assembly/Summary/ArkansasConstitution1874.pdf","state_flag_url":"https://cdn.civil.services/us-states/flags/arkansas-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/arkansas-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/arkansas-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/arkansas.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/arkansas.jpg","twitter_url":"https://twitter.com/arkansasgov","facebook_url":"https://www.facebook.com/Arkansas.gov"},{"state":"California","slug":"california","code":"CA","nickname":"Golden State","website":"http://www.ca.gov","admission_date":"1850-09-09","admission_number":31,"capital_city":"Sacramento","capital_url":"http://www.cityofsacramento.org","population":38332521,"population_rank":1,"constitution_url":"http://www.leginfo.ca.gov/const-toc.html","state_flag_url":"https://cdn.civil.services/us-states/flags/california-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/california-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/california-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/california.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/california.jpg","twitter_url":"https://twitter.com/cagovernment","facebook_url":null},{"state":"Colorado","slug":"colorado","code":"CO","nickname":"The Centennial State","website":"https://www.colorado.gov","admission_date":"1876-08-01","admission_number":38,"capital_city":"Denver","capital_url":"http://www.denvergov.org","population":5268367,"population_rank":22,"constitution_url":"https://www.colorado.gov/pacific/archives/government","state_flag_url":"https://cdn.civil.services/us-states/flags/colorado-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/colorado-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/colorado-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/colorado.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/colorado.jpg","twitter_url":"https://twitter.com/coloradogov","facebook_url":"https://www.facebook.com/Colorado.gov"},{"state":"Connecticut","slug":"connecticut","code":"CT","nickname":"Constitution State","website":"http://www.ct.gov","admission_date":"1788-01-09","admission_number":5,"capital_city":"Hartford","capital_url":"http://www.hartford.gov","population":3596080,"population_rank":29,"constitution_url":"http://www.ct.gov/sots/cwp/view.asp?a=3188&q=392288","state_flag_url":"https://cdn.civil.services/us-states/flags/connecticut-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/connecticut-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/connecticut-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/connecticut.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/connecticut.jpg","twitter_url":null,"facebook_url":null},{"state":"Delaware","slug":"delaware","code":"DE","nickname":"The First State / The Diamond State","website":"http://delaware.gov","admission_date":"1787-12-07","admission_number":1,"capital_city":"Dover","capital_url":"http://www.cityofdover.com","population":925749,"population_rank":45,"constitution_url":"http://www.state.de.us/facts/constit/welcome.htm","state_flag_url":"https://cdn.civil.services/us-states/flags/delaware-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/delaware-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/delaware-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/delaware.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/delaware.jpg","twitter_url":"https://twitter.com/delaware_gov","facebook_url":"https://www.facebook.com/delaware.gov"},{"state":"Florida","slug":"florida","code":"FL","nickname":"Sunshine State","website":"http://www.myflorida.com","admission_date":"1845-03-03","admission_number":27,"capital_city":"Tallahassee","capital_url":"https://www.talgov.com/Main/Home.aspx","population":19552860,"population_rank":4,"constitution_url":"http://www.leg.state.fl.us/Statutes/index.cfm","state_flag_url":"https://cdn.civil.services/us-states/flags/florida-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/florida-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/florida-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/florida.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/florida.jpg","twitter_url":null,"facebook_url":null},{"state":"Georgia","slug":"georgia","code":"GA","nickname":"Peach State","website":"http://georgia.gov","admission_date":"1788-01-02","admission_number":4,"capital_city":"Atlanta","capital_url":"http://www.atlantaga.gov","population":9992167,"population_rank":8,"constitution_url":"http://sos.ga.gov/admin/files/Constitution_2013_Final_Printed.pdf","state_flag_url":"https://cdn.civil.services/us-states/flags/georgia-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/georgia-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/georgia-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/georgia.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/georgia.jpg","twitter_url":"http://twitter.com/georgiagov","facebook_url":"http://www.facebook.com/pages/georgiagov/29760668054"},{"state":"Hawaii","slug":"hawaii","code":"HI","nickname":"Aloha State","website":"https://www.ehawaii.gov","admission_date":"1959-08-21","admission_number":50,"capital_city":"Honolulu","capital_url":"http://www.co.honolulu.hi.us","population":1404054,"population_rank":40,"constitution_url":"http://lrbhawaii.org/con","state_flag_url":"https://cdn.civil.services/us-states/flags/hawaii-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/hawaii-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/hawaii-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/hawaii.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/hawaii.jpg","twitter_url":"https://twitter.com/ehawaiigov","facebook_url":"https://www.facebook.com/ehawaii.gov"},{"state":"Idaho","slug":"idaho","code":"ID","nickname":"Gem State","website":"https://www.idaho.gov","admission_date":"1890-07-03","admission_number":43,"capital_city":"Boise","capital_url":"http://www.cityofboise.org","population":1612136,"population_rank":39,"constitution_url":"http://www.legislature.idaho.gov/idstat/IC/Title003.htm","state_flag_url":"https://cdn.civil.services/us-states/flags/idaho-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/idaho-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/idaho-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/idaho.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/idaho.jpg","twitter_url":"https://twitter.com/IDAHOgov","facebook_url":null},{"state":"Illinois","slug":"illinois","code":"IL","nickname":"Prairie State","website":"https://www.illinois.gov","admission_date":"1818-12-03","admission_number":21,"capital_city":"Springfield","capital_url":"http://www.springfield.il.us","population":12882135,"population_rank":5,"constitution_url":"http://www.ilga.gov/commission/lrb/conmain.htm","state_flag_url":"https://cdn.civil.services/us-states/flags/illinois-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/illinois-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/illinois-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/illinois.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/illinois.jpg","twitter_url":null,"facebook_url":null},{"state":"Indiana","slug":"indiana","code":"IN","nickname":"Hoosier State","website":"http://www.in.gov","admission_date":"1816-12-11","admission_number":19,"capital_city":"Indianapolis","capital_url":"http://www.indy.gov/Pages/Home.aspx","population":6570902,"population_rank":16,"constitution_url":"http://www.law.indiana.edu/uslawdocs/inconst.html","state_flag_url":"https://cdn.civil.services/us-states/flags/indiana-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/indiana-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/indiana-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/indiana.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/indiana.jpg","twitter_url":"https://twitter.com/in_gov","facebook_url":"https://www.facebook.com/IndianaGovernment"},{"state":"Iowa","slug":"iowa","code":"IA","nickname":"Hawkeye State","website":"https://www.iowa.gov","admission_date":"1846-12-28","admission_number":29,"capital_city":"Des Moines","capital_url":"http://www.ci.des-moines.ia.us","population":3090416,"population_rank":30,"constitution_url":"http://publications.iowa.gov/135/1/history/7-7.html","state_flag_url":"https://cdn.civil.services/us-states/flags/iowa-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/iowa-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/iowa-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/iowa.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/iowa.jpg","twitter_url":"https://twitter.com/IAGOVTWEETS","facebook_url":null},{"state":"Kansas","slug":"kansas","code":"KS","nickname":"Sunflower State","website":"https://www.kansas.gov","admission_date":"1861-01-29","admission_number":34,"capital_city":"Topeka","capital_url":"http://www.topeka.org","population":2893957,"population_rank":34,"constitution_url":"https://kslib.info/405/Kansas-Constitution","state_flag_url":"https://cdn.civil.services/us-states/flags/kansas-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/kansas-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/kansas-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/kansas.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/kansas.jpg","twitter_url":"http://www.twitter.com/ksgovernment","facebook_url":"http://www.facebook.com/pages/Topeka-KS/Kansasgov-Kansas-Government-Online/52068474220"},{"state":"Kentucky","slug":"kentucky","code":"KY","nickname":"Bluegrass State","website":"http://kentucky.gov","admission_date":"1792-06-01","admission_number":15,"capital_city":"Frankfort","capital_url":"http://frankfort.ky.gov","population":4395295,"population_rank":26,"constitution_url":"http://www.lrc.state.ky.us/Legresou/Constitu/intro.htm","state_flag_url":"https://cdn.civil.services/us-states/flags/kentucky-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/kentucky-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/kentucky-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/kentucky.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/kentucky.jpg","twitter_url":"https://twitter.com/kygov","facebook_url":"https://www.facebook.com/kygov"},{"state":"Louisiana","slug":"louisiana","code":"LA","nickname":"Pelican State","website":"http://louisiana.gov","admission_date":"1812-04-30","admission_number":18,"capital_city":"Baton Rouge","capital_url":"http://brgov.com","population":4625470,"population_rank":25,"constitution_url":"http://senate.legis.state.la.us/Documents/Constitution","state_flag_url":"https://cdn.civil.services/us-states/flags/louisiana-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/louisiana-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/louisiana-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/louisiana.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/louisiana.jpg","twitter_url":null,"facebook_url":null},{"state":"Maine","slug":"maine","code":"ME","nickname":"Pine Tree State","website":"http://www.maine.gov","admission_date":"1820-03-15","admission_number":23,"capital_city":"Augusta","capital_url":"http://www.augustamaine.gov","population":1328302,"population_rank":41,"constitution_url":"http://www.maine.gov/legis/const","state_flag_url":"https://cdn.civil.services/us-states/flags/maine-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/maine-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/maine-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/maine.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/maine.jpg","twitter_url":"https://twitter.com/mainegov_news","facebook_url":"http://www.facebook.com/pages/Augusta-ME/Mainegov/98519328240"},{"state":"Maryland","slug":"maryland","code":"MD","nickname":"Old Line State","website":"http://www.maryland.gov","admission_date":"1788-04-28","admission_number":7,"capital_city":"Annapolis","capital_url":"http://www.annapolis.gov","population":5928814,"population_rank":19,"constitution_url":"http://msa.maryland.gov/msa/mdmanual/43const/html/const.html","state_flag_url":"https://cdn.civil.services/us-states/flags/maryland-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/maryland-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/maryland-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/maryland.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/maryland.jpg","twitter_url":"https://twitter.com/statemaryland","facebook_url":"https://www.facebook.com/statemaryland"},{"state":"Massachusetts","slug":"massachusetts","code":"MA","nickname":"Bay State","website":"http://www.mass.gov","admission_date":"1788-02-06","admission_number":6,"capital_city":"Boston","capital_url":"http://www.ci.boston.ma.us","population":6692824,"population_rank":14,"constitution_url":"http://www.state.ma.us/legis/const.htm","state_flag_url":"https://cdn.civil.services/us-states/flags/massachusetts-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/massachusetts-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/massachusetts-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/massachusetts.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/massachusetts.jpg","twitter_url":"http://twitter.com/massgov","facebook_url":"https://www.facebook.com/massgov"},{"state":"Michigan","slug":"michigan","code":"MI","nickname":"Wolverine State / Great Lakes State","website":"http://www.michigan.gov","admission_date":"1837-01-26","admission_number":26,"capital_city":"Lansing","capital_url":"http://cityoflansingmi.com","population":9895622,"population_rank":9,"constitution_url":"http://www.legislature.mi.gov/(S(hrowl12tg05hemnnkidim1jb))/mileg.aspx?page=GetObject&objectname=mcl-Constitution","state_flag_url":"https://cdn.civil.services/us-states/flags/michigan-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/michigan-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/michigan-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/michigan.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/michigan.jpg","twitter_url":"https://twitter.com/migov","facebook_url":"https://www.facebook.com/MIgovernment"},{"state":"Minnesota","slug":"minnesota","code":"MN","nickname":"North Star State / Land of 10,000 Lakes","website":"https://mn.gov","admission_date":"1858-05-11","admission_number":32,"capital_city":"Saint Paul","capital_url":"http://www.stpaul.gov","population":5420380,"population_rank":21,"constitution_url":"http://www.house.leg.state.mn.us/cco/rules/mncon/preamble.htm","state_flag_url":"https://cdn.civil.services/us-states/flags/minnesota-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/minnesota-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/minnesota-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/minnesota.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/minnesota.jpg","twitter_url":null,"facebook_url":null},{"state":"Mississippi","slug":"mississippi","code":"MS","nickname":"Magnolia State","website":"http://www.ms.gov","admission_date":"1817-12-10","admission_number":20,"capital_city":"Jackson","capital_url":"http://www.city.jackson.ms.us","population":2991207,"population_rank":31,"constitution_url":"http://law.justia.com/constitution/mississippi","state_flag_url":"https://cdn.civil.services/us-states/flags/mississippi-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/mississippi-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/mississippi-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/mississippi.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/mississippi.jpg","twitter_url":"https://twitter.com/msdotgov","facebook_url":"https://www.facebook.com/msdotgov"},{"state":"Missouri","slug":"missouri","code":"MO","nickname":"Show Me State","website":"https://www.mo.gov","admission_date":"1821-08-10","admission_number":24,"capital_city":"Jefferson City","capital_url":"http://www.jeffcitymo.org","population":6044171,"population_rank":18,"constitution_url":"http://www.moga.mo.gov/mostatutes/moconstn.html","state_flag_url":"https://cdn.civil.services/us-states/flags/missouri-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/missouri-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/missouri-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/missouri.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/missouri.jpg","twitter_url":"https://twitter.com/MoGov","facebook_url":"https://www.facebook.com/mogov"},{"state":"Montana","slug":"montana","code":"MT","nickname":"Treasure State","website":"http://mt.gov","admission_date":"1889-11-08","admission_number":41,"capital_city":"Helena","capital_url":"http://www.ci.helena.mt.us","population":1015165,"population_rank":44,"constitution_url":"http://courts.mt.gov/content/library/docs/72constit.pdf","state_flag_url":"https://cdn.civil.services/us-states/flags/montana-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/montana-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/montana-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/montana.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/montana.jpg","twitter_url":null,"facebook_url":null},{"state":"Nebraska","slug":"nebraska","code":"NE","nickname":"Cornhusker State","website":"http://www.nebraska.gov","admission_date":"1867-03-01","admission_number":37,"capital_city":"Lincoln","capital_url":"http://lincoln.ne.gov","population":1868516,"population_rank":37,"constitution_url":"http://www.state.ne.us/legislative/statutes/C","state_flag_url":"https://cdn.civil.services/us-states/flags/nebraska-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/nebraska-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/nebraska-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/nebraska.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/nebraska.jpg","twitter_url":"https://twitter.com/Nebraskagov","facebook_url":"https://www.facebook.com/nebraska.gov"},{"state":"Nevada","slug":"nevada","code":"NV","nickname":"The Silver State","website":"http://nv.gov","admission_date":"1864-10-31","admission_number":36,"capital_city":"Carson City","capital_url":"http://www.carson.org","population":2790136,"population_rank":35,"constitution_url":"http://www.leg.state.nv.us/Const/NvConst.html","state_flag_url":"https://cdn.civil.services/us-states/flags/nevada-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/nevada-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/nevada-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/nevada.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/nevada.jpg","twitter_url":null,"facebook_url":null},{"state":"New Hampshire","slug":"new-hampshire","code":"NH","nickname":"Granite State","website":"https://www.nh.gov","admission_date":"1788-06-21","admission_number":9,"capital_city":"Concord","capital_url":"http://www.concordnh.gov","population":1323459,"population_rank":42,"constitution_url":"http://www.state.nh.us/constitution/constitution.html","state_flag_url":"https://cdn.civil.services/us-states/flags/new-hampshire-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/new-hampshire-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/new-hampshire-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/new-hampshire.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/new-hampshire.jpg","twitter_url":"https://twitter.com/nhgov","facebook_url":null},{"state":"New Jersey","slug":"new-jersey","code":"NJ","nickname":"Garden State","website":"http://www.state.nj.us","admission_date":"1787-12-18","admission_number":3,"capital_city":"Trenton","capital_url":"http://www.trentonnj.org","population":8899339,"population_rank":11,"constitution_url":"http://www.njleg.state.nj.us/lawsconstitution/consearch.asp","state_flag_url":"https://cdn.civil.services/us-states/flags/new-jersey-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/new-jersey-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/new-jersey-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/new-jersey.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/new-jersey.jpg","twitter_url":null,"facebook_url":null},{"state":"New Mexico","slug":"new-mexico","code":"NM","nickname":"Land of Enchantment","website":"http://www.newmexico.gov","admission_date":"1912-01-06","admission_number":47,"capital_city":"Santa Fe","capital_url":"http://www.santafenm.gov","population":2085287,"population_rank":36,"constitution_url":"http://www.loc.gov/law/guide/us-nm.html","state_flag_url":"https://cdn.civil.services/us-states/flags/new-mexico-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/new-mexico-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/new-mexico-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/new-mexico.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/new-mexico.jpg","twitter_url":null,"facebook_url":null},{"state":"New York","slug":"new-york","code":"NY","nickname":"Empire State","website":"http://www.ny.gov","admission_date":"1788-07-26","admission_number":11,"capital_city":"Albany","capital_url":"http://www.albanyny.org","population":19651127,"population_rank":3,"constitution_url":"https://www.dos.ny.gov/info/constitution.htm","state_flag_url":"https://cdn.civil.services/us-states/flags/new-york-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/new-york-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/new-york-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/new-york.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/new-york.jpg","twitter_url":"https://twitter.com/nygov","facebook_url":null},{"state":"North Carolina","slug":"north-carolina","code":"NC","nickname":"Old North State / Tar Heel State","website":"http://www.nc.gov","admission_date":"1789-11-21","admission_number":12,"capital_city":"Raleigh","capital_url":"http://www.raleigh-nc.org","population":9848060,"population_rank":10,"constitution_url":"http://statelibrary.dcr.state.nc.us/nc/stgovt/preconst.htm","state_flag_url":"https://cdn.civil.services/us-states/flags/north-carolina-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/north-carolina-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/north-carolina-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/north-carolina.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/north-carolina.jpg","twitter_url":"https://twitter.com/NCdotGov","facebook_url":null},{"state":"North Dakota","slug":"north-dakota","code":"ND","nickname":"Peace Garden State / Flickertail State / Roughrider State","website":"http://www.nd.gov","admission_date":"1889-11-02","admission_number":39,"capital_city":"Bismarck","capital_url":"http://www.bismarck.org","population":723393,"population_rank":48,"constitution_url":"http://www.legis.nd.gov/information/statutes/const-laws.html","state_flag_url":"https://cdn.civil.services/us-states/flags/north-dakota-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/north-dakota-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/north-dakota-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/north-dakota.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/north-dakota.jpg","twitter_url":"https://twitter.com/ExperienceND","facebook_url":"https://www.facebook.com/ExperienceND"},{"state":"Ohio","slug":"ohio","code":"OH","nickname":"Buckeye State","website":"https://ohio.gov","admission_date":"1803-03-01","admission_number":17,"capital_city":"Columbus","capital_url":"http://ci.columbus.oh.us","population":11570808,"population_rank":7,"constitution_url":"http://www.legislature.state.oh.us/constitution.cfm","state_flag_url":"https://cdn.civil.services/us-states/flags/ohio-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/ohio-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/ohio-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/ohio.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/ohio.jpg","twitter_url":"https://twitter.com/ohgov","facebook_url":null},{"state":"Oklahoma","slug":"oklahoma","code":"OK","nickname":"Sooner State","website":"https://www.ok.gov","admission_date":"1907-11-16","admission_number":46,"capital_city":"Oklahoma City","capital_url":"http://www.okc.gov","population":3850568,"population_rank":28,"constitution_url":"http://oklegal.onenet.net/okcon","state_flag_url":"https://cdn.civil.services/us-states/flags/oklahoma-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/oklahoma-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/oklahoma-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/oklahoma.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/oklahoma.jpg","twitter_url":"https://twitter.com/okgov","facebook_url":"https://www.facebook.com/okgov"},{"state":"Oregon","slug":"oregon","code":"OR","nickname":"Beaver State","website":"http://www.oregon.gov","admission_date":"1859-02-14","admission_number":33,"capital_city":"Salem","capital_url":"http://www.cityofsalem.net/Pages/default.aspx","population":3930065,"population_rank":27,"constitution_url":"http://bluebook.state.or.us/state/constitution/constitution.htm","state_flag_url":"https://cdn.civil.services/us-states/flags/oregon-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/oregon-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/oregon-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/oregon.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/oregon.jpg","twitter_url":null,"facebook_url":null},{"state":"Pennsylvania","slug":"pennsylvania","code":"PA","nickname":"Keystone State","website":"http://www.pa.gov","admission_date":"1787-12-12","admission_number":2,"capital_city":"Harrisburg","capital_url":"http://harrisburgpa.gov","population":12773801,"population_rank":6,"constitution_url":"http://sites.state.pa.us/PA_Constitution.html","state_flag_url":"https://cdn.civil.services/us-states/flags/pennsylvania-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/pennsylvania-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/pennsylvania-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/pennsylvania.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/pennsylvania.jpg","twitter_url":"https://www.facebook.com/visitPA","facebook_url":"https://twitter.com/visitPA"},{"state":"Rhode Island","slug":"rhode-island","code":"RI","nickname":"The Ocean State","website":"https://www.ri.gov","admission_date":"1790-05-29","admission_number":13,"capital_city":"Providence","capital_url":"http://www.providenceri.com","population":1051511,"population_rank":43,"constitution_url":"http://webserver.rilin.state.ri.us/RiConstitution","state_flag_url":"https://cdn.civil.services/us-states/flags/rhode-island-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/rhode-island-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/rhode-island-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/rhode-island.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/rhode-island.jpg","twitter_url":"https://twitter.com/rigov","facebook_url":"https://www.facebook.com/RIgov-Rhode-Island-Government-Online-24056655991"},{"state":"South Carolina","slug":"south-carolina","code":"SC","nickname":"Palmetto State","website":"http://www.sc.gov","admission_date":"1788-05-23","admission_number":8,"capital_city":"Columbia","capital_url":"http://www.columbiasc.net","population":4774839,"population_rank":24,"constitution_url":"http://www.scstatehouse.gov/scconstitution/scconst.php","state_flag_url":"https://cdn.civil.services/us-states/flags/south-carolina-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/south-carolina-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/south-carolina-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/south-carolina.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/south-carolina.jpg","twitter_url":"https://twitter.com/scgov","facebook_url":"http://www.facebook.com/pages/SCgov/12752057990"},{"state":"South Dakota","slug":"south-dakota","code":"SD","nickname":"Mount Rushmore State","website":"http://sd.gov","admission_date":"1889-11-02","admission_number":40,"capital_city":"Pierre","capital_url":"http://ci.pierre.sd.us","population":844877,"population_rank":46,"constitution_url":"http://legis.sd.gov/statutes/Constitution","state_flag_url":"https://cdn.civil.services/us-states/flags/south-dakota-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/south-dakota-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/south-dakota-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/south-dakota.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/south-dakota.jpg","twitter_url":null,"facebook_url":null},{"state":"Tennessee","slug":"tennessee","code":"TN","nickname":"Volunteer State","website":"https://www.tn.gov","admission_date":"1796-06-01","admission_number":16,"capital_city":"Nashville","capital_url":"http://www.nashville.gov","population":6495978,"population_rank":17,"constitution_url":"http://www.capitol.tn.gov/about/docs/TN-Constitution.pdf","state_flag_url":"https://cdn.civil.services/us-states/flags/tennessee-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/tennessee-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/tennessee-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/tennessee.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/tennessee.jpg","twitter_url":"https://twitter.com/TNVacation","facebook_url":"https://www.facebook.com/tnvacation"},{"state":"Texas","slug":"texas","code":"TX","nickname":"Lone Star State","website":"https://www.texas.gov","admission_date":"1845-12-29","admission_number":28,"capital_city":"Austin","capital_url":"http://www.austintexas.gov","population":26448193,"population_rank":2,"constitution_url":"http://www.constitution.legis.state.tx.us","state_flag_url":"https://cdn.civil.services/us-states/flags/texas-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/texas-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/texas-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/texas.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/texas.jpg","twitter_url":"https://twitter.com/texasgov","facebook_url":"http://www.facebook.com/Texas.gov"},{"state":"Utah","slug":"utah","code":"UT","nickname":"The Beehive State","website":"https://utah.gov","admission_date":"1896-01-04","admission_number":45,"capital_city":"Salt Lake City","capital_url":"http://www.slcgov.com","population":2900872,"population_rank":33,"constitution_url":"http://le.utah.gov/UtahCode/chapter.jsp?code=Constitution","state_flag_url":"https://cdn.civil.services/us-states/flags/utah-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/utah-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/utah-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/utah.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/utah.jpg","twitter_url":"https://twitter.com/UtahGov","facebook_url":"https://www.facebook.com/utahgov"},{"state":"Vermont","slug":"vermont","code":"VT","nickname":"Green Mountain State","website":"http://vermont.gov","admission_date":"1791-03-04","admission_number":14,"capital_city":"Montpelier","capital_url":"http://www.montpelier-vt.org","population":626630,"population_rank":49,"constitution_url":"http://www.leg.state.vt.us/statutes/const2.htm","state_flag_url":"https://cdn.civil.services/us-states/flags/vermont-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/vermont-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/vermont-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/vermont.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/vermont.jpg","twitter_url":"https://twitter.com/vermontgov","facebook_url":"https://www.facebook.com/MyVermont"},{"state":"Virginia","slug":"virginia","code":"VA","nickname":"Old Dominion State","website":"https://www.virginia.gov","admission_date":"1788-06-25","admission_number":10,"capital_city":"Richmond","capital_url":"http://www.richmondgov.com","population":8260405,"population_rank":12,"constitution_url":"http://hodcap.state.va.us/publications/Constitution-01-13.pdf","state_flag_url":"https://cdn.civil.services/us-states/flags/virginia-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/virginia-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/virginia-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/virginia.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/virginia.jpg","twitter_url":null,"facebook_url":null},{"state":"Washington","slug":"washington","code":"WA","nickname":"The Evergreen State","website":"http://www.wa.gov","admission_date":"1889-11-11","admission_number":42,"capital_city":"Olympia","capital_url":"http://www.ci.olympia.wa.us","population":6971406,"population_rank":13,"constitution_url":"http://www.leg.wa.gov/lawsandagencyrules/pages/constitution.aspx","state_flag_url":"https://cdn.civil.services/us-states/flags/washington-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/washington-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/washington-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/washington.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/washington.jpg","twitter_url":"https://twitter.com/wagov","facebook_url":""},{"state":"West Virginia","slug":"west-virginia","code":"WV","nickname":"Mountain State","website":"http://www.wv.gov","admission_date":"1863-06-20","admission_number":35,"capital_city":"Charleston","capital_url":"http://www.cityofcharleston.org","population":1854304,"population_rank":38,"constitution_url":"http://www.legis.state.wv.us/WVCODE/WV_CON.cfm","state_flag_url":"https://cdn.civil.services/us-states/flags/west-virginia-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/west-virginia-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/west-virginia-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/west-virginia.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/west-virginia.jpg","twitter_url":"https://twitter.com/wvgov","facebook_url":"https://www.facebook.com/wvgov"},{"state":"Wisconsin","slug":"wisconsin","code":"WI","nickname":"Badger State","website":"https://www.wisconsin.gov","admission_date":"1848-05-29","admission_number":30,"capital_city":"Madison","capital_url":"http://www.ci.madison.wi.us","population":5742713,"population_rank":20,"constitution_url":"http://www.legis.state.wi.us/rsb/2wiscon.html","state_flag_url":"https://cdn.civil.services/us-states/flags/wisconsin-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/wisconsin-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/wisconsin-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/wisconsin.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/wisconsin.jpg","twitter_url":null,"facebook_url":null},{"state":"Wyoming","slug":"wyoming","code":"WY","nickname":"Equality State","website":"http://www.wyo.gov","admission_date":"1890-07-10","admission_number":44,"capital_city":"Cheyenne","capital_url":"http://www.cheyennecity.org","population":582658,"population_rank":50,"constitution_url":"http://legisweb.state.wy.us/statutes/constitution.aspx?file=titles/97Title97.htm","state_flag_url":"https://cdn.civil.services/us-states/flags/wyoming-large.png","state_seal_url":"https://cdn.civil.services/us-states/seals/wyoming-large.png","map_image_url":"https://cdn.civil.services/us-states/maps/wyoming-large.png","landscape_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/wyoming.jpg","skyline_background_url":"https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/wyoming.jpg","twitter_url":null,"facebook_url":null}]');
+
+},{}]},["1xC6H","1RB6v","8lqZg"], "8lqZg", "parcelRequire3799")
 
 //# sourceMappingURL=index.975ef6c8.js.map
