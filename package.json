@@ -13,6 +13,7 @@
   "dependencies": {
     "@parcel/transformer-js": "^2.6.0",
     "bulma": "^0.9.4",
+    "classnames": "^2.3.1",
     "fuse.js": "^6.6.2",
     "parcel": "^2.6.0",
     "react": "^18.1.0",
