@@ -26972,11 +26972,25 @@ const App = ()=>{
     const [query, setQuery] = (0, _react.useState)("");
     const [resultList, setResultList] = (0, _react.useState)([]);
     const [selected, setSelected] = (0, _react.useState)(0);
+    console.log(selected);
+    const onSelect = (event)=>{
+        const { key  } = event;
+        if (key === "ArrowUp") {
+            const newSelected = selected - 1;
+            if (newSelected < 0) return;
+            setSelected(newSelected);
+        }
+        if (key === "ArrowDown") {
+            const newSelected = selected + 1;
+            if (newSelected > resultList.length - 1) return;
+            setSelected(newSelected);
+        }
+    };
     console.log({
         resultList
     });
     (0, _react.useEffect)(()=>{
-        setResultList(fuse.search(query));
+        setResultList(fuse.search(query).slice(0, 8));
     }, [
         query
     ]);
@@ -26990,15 +27004,16 @@ const App = ()=>{
                     onChange: ({ target  })=>setQuery(target.value),
                     className: "input",
                     type: "text",
-                    placeholder: "SEARCH STATE ..."
+                    placeholder: "SEARCH STATE ...",
+                    onKeyUp: onSelect
                 }, void 0, false, {
                     fileName: "src/components/App.js",
-                    lineNumber: 35,
+                    lineNumber: 65,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 34,
+                lineNumber: 64,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27016,24 +27031,24 @@ const App = ()=>{
                             children: state
                         }, code, false, {
                             fileName: "src/components/App.js",
-                            lineNumber: 52,
+                            lineNumber: 84,
                             columnNumber: 21
                         }, undefined);
                     })
                 }, void 0, false, {
                     fileName: "src/components/App.js",
-                    lineNumber: 46,
+                    lineNumber: 78,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 42,
+                lineNumber: 74,
                 columnNumber: 5
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/App.js",
-        lineNumber: 33,
+        lineNumber: 63,
         columnNumber: 9
     }, undefined);
 };
