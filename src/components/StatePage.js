@@ -18,7 +18,7 @@ const StatePage = ({
   return (
     <div className="StatePage content">
       <button
-        className="button"
+        className="button is-link"
         onClick={onBack}
       >
         Back to search

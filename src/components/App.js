@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Fuse from "fuse.js";
-import states from "../states.json";
-import classnames from "classnames";
-import StatePage from "./StatePage";
+
 import StateSearch from "./StateSearch";
 
 const App = () => {
