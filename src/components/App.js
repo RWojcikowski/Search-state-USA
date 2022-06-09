@@ -53,18 +53,21 @@ const App = () => {
 
     return (
       <div className="App">
-<h1></h1>
-
-        <StatePage
-          state={currentState.item}
-          onBack={() => setPicked(null)}
-        />
+        <StatePage state={currentState.item} onBack={() => setPicked(null)} />
       </div>
     );
   }
 
   return (
     <div className="App">
+<section className="hero">
+  <div className="hero-body">
+    <p className="title">
+     Search states USA
+    </p>
+  </div>
+</section>
+
       <div className="dropdown is-active">
         <div className="dropdown-trigger">
           <input
