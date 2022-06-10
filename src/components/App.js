@@ -1,39 +1,25 @@
-import React, { useState, useEffect } from "react";
-
-import StateSearch from "./StateSearch";
+import React from 'react';
+import StatePage from './StatePage';
+import StateSearch from './StateSearch';
+import SearchKeySelect from './SearchKeySelect';
+import DataTypeSelect from './DataTypeSelect';
+import { useSearchState } from '../hooks/useSearchState';
+import { SearchStateContext } from '../hooks/useSearchState';
 
 const App = () => {
+  const searchState = useSearchState();
+  const { currentState } = searchState;
+
   return (
     <div className="App">
-      <section className="hero">
-        <div className="hero-body">
-          <p className="title">Search states USA</p>
-        </div>
-      </section>
-
-      <div className="field">
-        <label className="label ">Search by:</label>
-        <div class="select is-info">
-          <select>
-            <option>Name</option>
-            <option>Code state </option>
-            <option>Capital city </option>
-          </select>
-        </div>
-      </div>
-
-      <StateSearch />
-
-      <div className="field">
-        <label className="label ">Show Data:</label>
-        <div class="select is-info">
-          <select>
-            <option>Table</option>
-            <option>Symbols</option>
-            <option>Map</option>
-          </select>
-        </div>
-      </div>
+      <SearchStateContext.Provider value={searchState}>
+        <SearchKeySelect />
+        <StateSearch />
+        <DataTypeSelect />
+        {currentState && (
+          <StatePage />
+        )}
+      </SearchStateContext.Provider>
     </div>
   );
 };
