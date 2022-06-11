@@ -14,9 +14,9 @@ const DataTypeSelect = () => {
       onSelect={setDataType}
       value={dataType}
     >
-      <option value="table">tabela</option>
-      <option value="symbols">symbole</option>
-      <option value="map">mapa</option>
+      <option value="table">Tabela</option>
+      <option value="symbols">Symbole</option>
+      <option value="map">Mapa</option>
     </Select>
   );
 }

@@ -36,23 +36,23 @@ const StatePage = () => {
         <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
           <tbody>
             <tr>
-              <td>Admission date</td>
+              <td>Data przyłączenia</td>
               <td>{admission_date}</td>
             </tr>
             <tr>
-              <td>Capital city</td>
+              <td>Stolica</td>
               <td>{capital_city}</td>
             </tr>
             <tr>
-              <td>Code</td>
+              <td>Kod</td>
               <td>{code}</td>
             </tr>
             <tr>
-              <td>Population</td>
+              <td>Populacja</td>
               <td>{population}</td>
             </tr>
             <tr>
-              <td>Population rank</td>
+              <td>Ranking populacji</td>
               <td>{population_rank}</td>
             </tr>
           </tbody>

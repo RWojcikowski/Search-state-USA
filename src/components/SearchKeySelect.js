@@ -14,9 +14,9 @@ const SearchKeySelect = () => {
       onSelect={setSearchKey}
       value={searchKey}
     >
-      <option value="state">nazwa</option>
-      <option value="code">kod stanu</option>
-      <option value="capital_city">stolica</option>
+      <option value="state">Nazwa</option>
+      <option value="code">Kod stanu</option>
+      <option value="capital_city">Stolica</option>
     </Select>
   );
 }
